@@ -1,0 +1,14 @@
+Package: ndsbr
+Type: Package
+Title: A Compilation of Functions used in the NDS-BR Project.
+Version: 0.0.0.9000
+Authors@R: person("Pedro Augusto", "Borges dos Santos", 
+    email = "pabsantos21@gmail.com", role = c("aut", "cre"))
+Description: 
+    A Compilation of Functions used in the NDS-BR Project.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    sf
+Year: 2022
