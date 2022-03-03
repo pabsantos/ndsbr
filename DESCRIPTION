@@ -10,5 +10,6 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    sf
-Year: 2022
+    dplyr,
+    sf,
+    tidyr
