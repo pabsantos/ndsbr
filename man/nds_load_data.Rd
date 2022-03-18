@@ -4,7 +4,7 @@
 \alias{nds_load_data}
 \title{Load naturalistic data stored in \code{.csv} files}
 \usage{
-nds_load_data(pattern, folder = NULL)
+nds_load_data(pattern, folder = NULL, vars = NULL)
 }
 \arguments{
 \item{pattern}{A \code{character} object with a common initial text among
@@ -12,6 +12,9 @@ the files to be read.}
 
 \item{folder}{A \code{character} object of the path to the folder containing
 the files.}
+
+\item{vars}{A \code{character} vector of variable names to load. If empty,
+all variables are loaded.}
 }
 \value{
 A tibble of the NDS-BR dataset.
@@ -27,7 +30,8 @@ files. If only one file is to be loaded, \code{pattern} can be the full name
 of the file. In the \code{folder} argument it is possible to insert a path
 of the folder in which the files are included. If this field is left empty,
 the function considers that the files are present in the working directory
-of the project (\code{getwd()}).
+of the project (\code{getwd()}). In the \code{vars} parameter it is possible
+to insert a character vector with the desired variable names to load.
 }
 \examples{
 ## Considering driver_A.csv, driver_B.csv and driver_C.csv:

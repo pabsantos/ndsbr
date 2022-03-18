@@ -9,12 +9,15 @@
 #' of the file. In the \code{folder} argument it is possible to insert a path
 #' of the folder in which the files are included. If this field is left empty,
 #' the function considers that the files are present in the working directory
-#' of the project (\code{getwd()}).
+#' of the project (\code{getwd()}). In the \code{vars} parameter it is possible
+#' to insert a character vector with the desired variable names to load.
 #'
 #' @param pattern A \code{character} object with a common initial text among
 #' the files to be read.
 #' @param folder A \code{character} object of the path to the folder containing
 #' the files.
+#' @param vars A \code{character} vector of variable names to load. If empty,
+#' all variables are loaded.
 #'
 #' @return A tibble of the NDS-BR dataset.
 #' @export
@@ -23,7 +26,7 @@
 #' ## Considering driver_A.csv, driver_B.csv and driver_C.csv:
 #' path <- system.file("extdata", package = "ndsbr")
 #' df <- nds_load_data("driver", path)
-nds_load_data <- function(pattern, folder = NULL) {
+nds_load_data <- function(pattern, folder = NULL, vars = NULL) {
 
   if (missing(pattern)) {
     stop("Pattern is missing")
@@ -83,6 +86,7 @@ nds_load_data <- function(pattern, folder = NULL) {
     }
 
     files_path <- paste0(folder, "/", files_names)
+    files_path <- normalizePath(files_path)
   }
 
   files <- vector(length = length(files_path))
@@ -90,5 +94,13 @@ nds_load_data <- function(pattern, folder = NULL) {
     files_path, ~readr::read_csv2(.x, col_types = column_types)
   )
 
-  purrr::reduce(files, dplyr::bind_rows)
+  data <- purrr::reduce(files, dplyr::bind_rows)
+
+  if (is.null(vars)) {
+    return(data)
+  } else {
+    data <- data %>%
+      dplyr::select(vars)
+    return(data)
+  }
 }
