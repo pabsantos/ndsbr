@@ -11,7 +11,7 @@
 #'
 #' @param data A tibble or data.frame object containing naturalistic data
 #' @param by A column name to group the results
-#' @param format The desired time unit ("seconds", "minutes" or "hours")
+#' @param units The desired time unit ("seconds", "minutes" or "hours")
 #' @param valid Option to select all data or valid data ("all", "yes").
 #'
 #' @return A tibble with traveled time results.
@@ -23,7 +23,7 @@
 #' path <- system.file("extdata", package = "ndsbr")
 #' df <- nds_load_data("driver", path)
 #' nds_calc_time(df, "DRIVER")
-nds_calc_time <- function(data, by, format = "seconds", valid = "all") {
+nds_calc_time <- function(data, by, units = "seconds", valid = "all") {
 
   if (missing(data)) {
     stop("'data' is missing")
@@ -33,25 +33,55 @@ nds_calc_time <- function(data, by, format = "seconds", valid = "all") {
     stop("'by' is missing")
   }
 
-  if (!format %in% c("seconds", "minutes", "hours")) {
-    stop("invalid 'time' format")
+  if (!units %in% c("seconds", "minutes", "hours")) {
+    stop("invalid time unit")
   }
 
   data <- data %>%
     dplyr::group_by({{ by }}) %>%
     dplyr::summarise(TIME = dplyr::n())
 
-  if (format == "hours") {
+  if (units == "hours") {
     data <- data %>% dplyr::mutate(TIME = .data$TIME / 3600)
   }
 
-  if (format == "minutes") {
+  if (units == "minutes") {
     data <- data %>% dplyr::mutate(TIME = .data$TIME / 60)
   }
 
   if (valid == "yes") {
     data <- data %>%
       dplyr::filter(.data$VALID_TIME == "Yes" & .data$NOME_RUA != "NPI")
+  }
+
+  return(data)
+}
+
+nds_calc_dist <- function(data, by, units = "meters") {
+
+  if (missing(data)) {
+    stop("'data' is missing")
+  }
+
+  if (missing(by)) {
+    stop("'by' is missing")
+  }
+
+  if (!units %in% c("meters", "kilometers")) {
+    stop("invalid distance unit")
+  }
+  data <- data %>%
+    dplyr::mutate(
+      dist = sf::st_length(.data$wkt_lines),
+      dist = units::drop_units(.data$dist)
+    ) %>%
+    sf::st_drop_geometry() %>%
+    dplyr::group_by({{ by }}) %>%
+    dplyr::summarise(DIST = sum(.data$dist))
+
+  if (units == "kilometers") {
+    data <- data %>%
+      dplyr::mutate(DIST = .data$DIST / 1000)
   }
 
   return(data)
