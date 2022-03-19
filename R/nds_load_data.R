@@ -29,7 +29,7 @@
 nds_load_data <- function(pattern, folder = NULL, vars = NULL) {
 
   if (missing(pattern)) {
-    stop("Pattern is missing")
+    stop("'pattern' is missing")
   }
 
   pattern_init <- paste0("^", pattern)
