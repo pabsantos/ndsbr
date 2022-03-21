@@ -1,4 +1,4 @@
-#' Calculate traveled time of the naturalistic data
+#' Calculate traveled time from the naturalistic data
 #'
 #' \code{nds_calc_time} extracts traveled time from the naturalistic data.
 #'
@@ -17,7 +17,7 @@
 #' @return A tibble with traveled time results.
 #' @export
 #'
-#' @seealso \link{nds_load_data}
+#' @seealso \link{nds_load_data}; \link{nds_calc_dist}
 #'
 #' @examples
 #' path <- system.file("extdata", package = "ndsbr")
@@ -57,7 +57,33 @@ nds_calc_time <- function(data, by, units = "seconds", valid = "all") {
   return(data)
 }
 
-nds_calc_dist <- function(data, by, units = "meters") {
+#' Calculate traveled distance from the naturalistic data
+#'
+#' \code{nds_calc_dist} extracts traveled time from the naturalistic data.
+#'
+#' This function uses a sf object (\link{nds_create_lines}) as main
+#' input and extracts its traveled distance, grouping the results by the
+#' attributes of the desired variable (parameter \code{by}). The distance
+#' unit can be in "meters" (default) or "kilometers". The \code{geom}
+#' parameter is used to identify the column that contains the geometry of the
+#' sf object.
+#'
+#' @param data A sf object with linestring geometry
+#' @param geom The geometry column in the sf object
+#' @param by A column name to group the results
+#' @param units The desired distance unit ("meters", "kilometers")
+#'
+#' @return A tibble with traveled distance results
+#' @export
+#'
+#' @seealso \link{nds_create_lines}; \link{nds_calc_time}
+#'
+#' @examples
+#' path <- system.file("extdata", package = "ndsbr")
+#' nds_data <- nds_load_data("driver", path)
+#' nds_lines <- nds_create_lines(nds_data, x = LONG, y = LAT)
+#' nds_calc_dist(nds_lines, wkt_lines, DRIVER)
+nds_calc_dist <- function(data, geom, by, units = "meters") {
 
   if (missing(data)) {
     stop("'data' is missing")
@@ -67,12 +93,17 @@ nds_calc_dist <- function(data, by, units = "meters") {
     stop("'by' is missing")
   }
 
+  if (missing(geom)) {
+    stop("'geom' is missing")
+  }
+
   if (!units %in% c("meters", "kilometers")) {
     stop("invalid distance unit")
   }
+
   data <- data %>%
     dplyr::mutate(
-      dist = sf::st_length(.data$wkt_lines),
+      dist = sf::st_length({{ geom }}),
       dist = units::drop_units(.data$dist)
     ) %>%
     sf::st_drop_geometry() %>%

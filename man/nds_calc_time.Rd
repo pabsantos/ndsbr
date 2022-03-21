@@ -2,16 +2,16 @@
 % Please edit documentation in R/nds_calc.R
 \name{nds_calc_time}
 \alias{nds_calc_time}
-\title{Calculate traveled time of the naturalistic data}
+\title{Calculate traveled time from the naturalistic data}
 \usage{
-nds_calc_time(data, by, format = "seconds", valid = "all")
+nds_calc_time(data, by, units = "seconds", valid = "all")
 }
 \arguments{
 \item{data}{A tibble or data.frame object containing naturalistic data}
 
 \item{by}{A column name to group the results}
 
-\item{format}{The desired time unit ("seconds", "minutes" or "hours")}
+\item{units}{The desired time unit ("seconds", "minutes" or "hours")}
 
 \item{valid}{Option to select all data or valid data ("all", "yes").}
 }
@@ -35,5 +35,5 @@ df <- nds_load_data("driver", path)
 nds_calc_time(df, "DRIVER")
 }
 \seealso{
-\link{nds_load_data}
+\link{nds_load_data}; \link{nds_calc_dist}
 }
