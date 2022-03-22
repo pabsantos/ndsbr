@@ -3,7 +3,7 @@
 \docType{package}
 \name{ndsbr}
 \alias{ndsbr}
-\title{\code{ndsbr}: Load, Analyze and Manipulate Data From The Brazilian
+\title{\code{ndsbr}: Load, Analyze and Manipulate Data of The Brazilian
 Naturalistic Driving Study}
 \description{
 The \code{ndsbr} package provides two main categories of functions:
@@ -26,9 +26,9 @@ The \code{nds_calc} functions can be used to extract basic information of the
 naturalistic sample (traveled time or traveled distance) and safety-related
 variables, such as speeding. These functions are:
 \itemize{
-\item \code{nds_calc_dist}
+\item \link{nds_calc_dist}
 \item \link{nds_calc_time}
-\item \code{nds_calc_speeding}
+\item \link{nds_calc_speeding}
 }
 }
 

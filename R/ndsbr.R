@@ -1,4 +1,4 @@
-#' \code{ndsbr}: Load, Analyze and Manipulate Data From The Brazilian
+#' \code{ndsbr}: Load, Analyze and Manipulate Data of The Brazilian
 #' Naturalistic Driving Study
 #'
 #' The \code{ndsbr} package provides two main categories of functions:
@@ -17,9 +17,9 @@
 #' The \code{nds_calc} functions can be used to extract basic information of the
 #' naturalistic sample (traveled time or traveled distance) and safety-related
 #' variables, such as speeding. These functions are:
-#' * \code{nds_calc_dist}
+#' * \link{nds_calc_dist}
 #' * \link{nds_calc_time}
-#' * \code{nds_calc_speeding}
+#' * \link{nds_calc_speeding}
 #'
 #'
 #' @section Other functions:
