@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ndsbr
+# ndsbr \<img src=“man/figures/ndsbr.png” align=“right”, width=“160” />
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -43,7 +43,7 @@ devtools::install_github("pabsantos/ndsbr")
 
 ## Example
 
-This is a basic example which shows you how to load NDS-BR data a
+This is a basic example which shows you how to load NDS-BR data and
 calculate traveled distances. First, `nds_load_data` loads the sample
 from all NDS-BR files inside a specific folder, defined by the user.
 
