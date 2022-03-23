@@ -18,37 +18,56 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of ndsbr is to ...
+The goal of ndsbr is to help you **load**, **manipulate** and **analyze** the data sample of the Brazilian Naturalistic Driving Study (NDS-BR).
+
+## Overview
+
+This package privides two main categories of functions: `nds_create` and `nds_calc`, in addition to other utility functions. `nds_create` functions are used to create spatial objects in sf format, using the naturalistic data as input:
+
+- `nds_create_points`
+- `nds_create_lines`
+
+`nds_calc` functions can be used to extract basic information of the naturalistic sample (traveled time or traveled distance) and safety-related variables, such as speeding:
+
+- `nds_calc_dist`
+- `nds_calc_time`
+- `nds_calc_speeding`
+
+`nds_load_data` is used to load naturalistic data and `nds_download_sf` can be used to download spatial data and import into the project environment. 
 
 ## Installation
 
-You can install the development version of ndsbr like so:
+You can install the current version of ndsbr like so:
 
-``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+``` {r install, results = 'hide', eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("pabsantos/ndsbr")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to load NDS-BR data a calculate traveled distances. First, `nds_load_data` loads the sample from all NDS-BR files inside a specific folder, defined by the user. 
 
-```{r example}
+```{r load, warning=FALSE}
 library(ndsbr)
-## basic example code
+path <- system.file("extdata", package = "ndsbr") ## Example files location
+nds_data <- nds_load_data("driver", path)
+
+head(nds_data, n = 5)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Creating a sf object with linestring geometry using `nds_create_lines`
 
-```{r cars}
-summary(cars)
+```{r lines}
+nds_lines <- nds_create_lines(nds_data, x = LONG, y = LAT)
+
+plot(nds_lines["DRIVER"])
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
+Finally, `nds_calc_dist` extracts traveled distance, grouped by a variable defined by the user.
 
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r dist}
+nds_dist <- nds_calc_dist(nds_lines, geom = wkt_lines, by = DRIVER)
+nds_dist
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

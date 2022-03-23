@@ -6,48 +6,92 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of ndsbr is to …
+The goal of ndsbr is to help you **load**, **manipulate** and
+**analyze** the data sample of the Brazilian Naturalistic Driving Study
+(NDS-BR).
+
+## Overview
+
+This package privides two main categories of functions: `nds_create` and
+`nds_calc`, in addition to other utility functions. `nds_create`
+functions are used to create spatial objects in sf format, using the
+naturalistic data as input:
+
+-   `nds_create_points`
+-   `nds_create_lines`
+
+`nds_calc` functions can be used to extract basic information of the
+naturalistic sample (traveled time or traveled distance) and
+safety-related variables, such as speeding:
+
+-   `nds_calc_dist`
+-   `nds_calc_time`
+-   `nds_calc_speeding`
+
+`nds_load_data` is used to load naturalistic data and `nds_download_sf`
+can be used to download spatial data and import into the project
+environment.
 
 ## Installation
 
-You can install the development version of ndsbr like so:
+You can install the current version of ndsbr like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+# install.packages("devtools")
+devtools::install_github("pabsantos/ndsbr")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to load NDS-BR data a
+calculate traveled distances. First, `nds_load_data` loads the sample
+from all NDS-BR files inside a specific folder, defined by the user.
 
 ``` r
 library(ndsbr)
-## basic example code
+path <- system.file("extdata", package = "ndsbr") ## Example files location
+nds_data <- nds_load_data("driver", path)
+#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+
+head(nds_data, n = 5)
+#> # A tibble: 5 × 34
+#>   DRIVER  LONG   LAT DAY       DAY_CORRIGIDO `03:00:00`  TRIP ID    PR         H
+#>   <chr>  <dbl> <dbl> <chr>     <chr>         <chr>      <dbl> <chr> <chr>  <dbl>
+#> 1 A      -49.2 -25.5 26/8/2019 26/8/2019     22:17:27       5 A05   19:17…    NA
+#> 2 A      -49.2 -25.5 26/8/2019 26/8/2019     22:17:28       5 A05   19:17…     0
+#> 3 A      -49.2 -25.5 26/8/2019 26/8/2019     22:17:29       5 A05   19:17…     0
+#> 4 A      -49.2 -25.5 26/8/2019 26/8/2019     22:17:30       5 A05   19:17…     0
+#> 5 A      -49.2 -25.5 26/8/2019 26/8/2019     22:17:31       5 A05   19:17…     0
+#> # … with 24 more variables: M <dbl>, S <dbl>, TIME_ACUM <dbl>, SPD_MPH <dbl>,
+#> #   SPD_KMH <dbl>, ACEL_MS2 <dbl>, HEADING <dbl>, ALTITUDE_FT <dbl>,
+#> #   VALID_TIME <chr>, TIMESTAMP_GPS <chr>, CPOOL <chr>, CPOOLING_CHECKED <chr>,
+#> #   WSB <chr>, UMP_YN <chr>, UMP <chr>, PICK_UP <chr>, ACTION <chr>,
+#> #   GPS_FILE <chr>, CIDADE <chr>, BAIRRO <chr>, NOME_RUA <chr>,
+#> #   HIERARQUIA_CWB <chr>, HIERARQUIA_CTB <chr>, LIMITE_VEL <chr>
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Creating a sf object with linestring geometry using `nds_create_lines`
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+nds_lines <- nds_create_lines(nds_data, x = LONG, y = LAT)
+
+plot(nds_lines["DRIVER"])
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+<img src="man/figures/README-lines-1.png" width="100%" />
 
-You can also embed plots, for example:
+Finally, `nds_calc_dist` extracts traveled distance, grouped by a
+variable defined by the user.
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+``` r
+nds_dist <- nds_calc_dist(nds_lines, geom = wkt_lines, by = DRIVER)
+nds_dist
+#> # A tibble: 3 × 2
+#>   DRIVER   DIST
+#>   <chr>   <dbl>
+#> 1 A      22508.
+#> 2 B      51529.
+#> 3 C      37736.
+```
