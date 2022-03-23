@@ -51,9 +51,6 @@ from all NDS-BR files inside a specific folder, defined by the user.
 library(ndsbr)
 path <- system.file("extdata", package = "ndsbr") ## Example files location
 nds_data <- nds_load_data("driver", path)
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
-#> ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
 
 head(nds_data, n = 5)
 #> # A tibble: 5 × 34

@@ -48,7 +48,7 @@ devtools::install_github("pabsantos/ndsbr")
 
 This is a basic example which shows you how to load NDS-BR data a calculate traveled distances. First, `nds_load_data` loads the sample from all NDS-BR files inside a specific folder, defined by the user. 
 
-```{r load, warning=FALSE}
+```{r load, warning=FALSE, message=FALSE}
 library(ndsbr)
 path <- system.file("extdata", package = "ndsbr") ## Example files location
 nds_data <- nds_load_data("driver", path)
