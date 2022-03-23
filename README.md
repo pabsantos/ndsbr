@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ndsbr \<img src=“man/figures/ndsbr.png” align=“right”, width=“160” />
+# ndsbr <img src="man/figures/README-ndsbr.png" align="right" width="160" />
 
 <!-- badges: start -->
 <!-- badges: end -->
