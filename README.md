@@ -7,8 +7,8 @@
 <!-- badges: end -->
 
 The goal of ndsbr is to help you **load**, **manipulate** and
-**analyze** the data sample of the Brazilian Naturalistic Driving Study
-(NDS-BR).
+**analyze** the data sample of the [Brazilian Naturalistic Driving Study
+(NDS-BR)](http://www.tecnologia.ufpr.br/portal/ceppur/estudo-naturalistico-de-direcao-brasileiro/).
 
 ## Overview
 
