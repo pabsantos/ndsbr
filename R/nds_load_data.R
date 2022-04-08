@@ -2,8 +2,9 @@
 #'
 #' This function loads one or more \code{.csv} files containing the NDS-BR data.
 #'
-#' \code{nds_load_data} considers that data inside the \code{.csv} files
-#' are separated by ';', and decimals are expressed by comma (','). The
+#' \code{nds_load_data} default considers that data inside the \code{.csv} files
+#' are separated by ';', and decimals are expressed by comma (','). If
+#' \code{sep} is set to ",", decimals must be expressed by ".". The
 #' \code{pattern} argument is used to identify a common initial text among the
 #' files. If only one file is to be loaded, \code{pattern} can be the full name
 #' of the file. In the \code{folder} argument it is possible to insert a path
@@ -16,6 +17,8 @@
 #' the files to be read.
 #' @param folder A \code{character} object of the path to the folder containing
 #' the files.
+#' @param sep A \code{character} object defining the separator in the
+#' \code{.csv} file. Default is ";".
 #' @param vars A \code{character} vector of variable names to load. If empty,
 #' all variables are loaded.
 #'
@@ -26,10 +29,14 @@
 #' ## Considering driver_A.csv, driver_B.csv and driver_C.csv:
 #' path <- system.file("extdata", package = "ndsbr")
 #' df <- nds_load_data("driver", path)
-nds_load_data <- function(pattern, folder = NULL, vars = NULL) {
+nds_load_data <- function(pattern, folder = NULL, sep = ";", vars = NULL) {
 
   if (missing(pattern)) {
     stop("'pattern' is missing")
+  }
+
+  if (!sep %in% c(",", ";")) {
+    stop("invalid 'sep' value")
   }
 
   pattern_init <- paste0("^", pattern)
@@ -90,9 +97,16 @@ nds_load_data <- function(pattern, folder = NULL, vars = NULL) {
   }
 
   files <- vector(length = length(files_path))
-  files <- purrr::map(
-    files_path, ~readr::read_csv2(.x, col_types = column_types)
-  )
+
+  if (sep == ";") {
+    files <- purrr::map(
+      files_path, ~readr::read_csv2(.x, col_types = column_types)
+    )
+  } else {
+    files <- purrr::map(
+      files_path, ~readr::read_csv(.x, col_types = column_types)
+    )
+  }
 
   data <- purrr::reduce(files, dplyr::bind_rows)
 

@@ -4,7 +4,7 @@
 \alias{nds_load_data}
 \title{Load naturalistic data stored in \code{.csv} files}
 \usage{
-nds_load_data(pattern, folder = NULL, vars = NULL)
+nds_load_data(pattern, folder = NULL, sep = ";", vars = NULL)
 }
 \arguments{
 \item{pattern}{A \code{character} object with a common initial text among
@@ -12,6 +12,9 @@ the files to be read.}
 
 \item{folder}{A \code{character} object of the path to the folder containing
 the files.}
+
+\item{sep}{A \code{character} object defining the separator in the
+\code{.csv} file. Default is ";".}
 
 \item{vars}{A \code{character} vector of variable names to load. If empty,
 all variables are loaded.}
@@ -23,8 +26,9 @@ A tibble of the NDS-BR dataset.
 This function loads one or more \code{.csv} files containing the NDS-BR data.
 }
 \details{
-\code{nds_load_data} considers that data inside the \code{.csv} files
-are separated by ';', and decimals are expressed by comma (','). The
+\code{nds_load_data} default considers that data inside the \code{.csv} files
+are separated by ';', and decimals are expressed by comma (','). If
+\code{sep} is set to ",", decimals must be expressed by ".". The
 \code{pattern} argument is used to identify a common initial text among the
 files. If only one file is to be loaded, \code{pattern} can be the full name
 of the file. In the \code{folder} argument it is possible to insert a path
