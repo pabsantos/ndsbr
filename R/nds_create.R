@@ -6,14 +6,14 @@
 #' \code{nds_create_lines} takes the naturalistic data as input and creates a
 #' linestring spatial object. \code{x} and \code{y} arguments considers
 #' longitude and latitude, respectively. It is possible to filter only valid
-#' time data using the \code{valid} parameter. In it's default, the function
-#' transforms all data, including invalid times.
+#' time data using the \code{valid} parameter, based on the \code{VALID_TIME}
+#' attribute. In it's default, the function transforms all data,
+#' including invalid times.
 #'
 #' @param data A data.frame or tibble object with coordinates.
 #' @param x Data attribute with x coordinates.
 #' @param y Data attribute with y coordinates.
-#' @param valid Option to select all data or valid data
-#' ("all", "yes").
+#' @param valid Option to select all data or valid data ("all", "yes").
 #'
 #' @return A sf object with linestring geometry.
 #' @export
@@ -43,9 +43,9 @@ nds_create_lines <- function(data, x, y, valid = "all") {
 
   if (valid == "yes") {
     data <- data %>%
-      dplyr::filter(.data$VALID_TIME == "Yes") %>%
-      dplyr::filter(.data$NOME_RUA != "NPI")
+      dplyr::filter(.data$VALID_TIME == "Yes")
   }
+
   data %>%
     tidyr::drop_na({{x}}, {{y}}) %>%
     dplyr::filter({{x}} != 0, {{y}} != 0) %>%

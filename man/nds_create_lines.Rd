@@ -13,8 +13,7 @@ nds_create_lines(data, x, y, valid = "all")
 
 \item{y}{Data attribute with y coordinates.}
 
-\item{valid}{Option to select all data or valid data
-("all", "yes").}
+\item{valid}{Option to select all data or valid data ("all", "yes").}
 }
 \value{
 A sf object with linestring geometry.
@@ -27,8 +26,9 @@ the NDS-BR naturalistic data (see \link{nds_load_data}).
 \code{nds_create_lines} takes the naturalistic data as input and creates a
 linestring spatial object. \code{x} and \code{y} arguments considers
 longitude and latitude, respectively. It is possible to filter only valid
-time data using the \code{valid} parameter. In it's default, the function
-transforms all data, including invalid times.
+time data using the \code{valid} parameter, based on the \code{VALID_TIME}
+attribute. In it's default, the function transforms all data,
+including invalid times.
 }
 \examples{
 path <- system.file("extdata", package = "ndsbr")
