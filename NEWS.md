@@ -1,3 +1,7 @@
+# ndsbr 0.1.2
+
+* Fixed a bug in the `nds_create_lines`: it was not considering the right amount of valid points. 
+
 # ndsbr 0.1.1
 
 * Added a `NEWS.md` file to track changes to the package.
