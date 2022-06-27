@@ -1,3 +1,7 @@
+# ndsbr 0.1.4
+
+* Fixed a bug in `nds_create_points` and `nds_calc_time`: it was not considering the correct amount of valid data.
+
 # ndsbr 0.1.3
 
 * Created a new function `nds_split_data`: now it is possible to split the naturalistic data into the original separation of the sample. 
