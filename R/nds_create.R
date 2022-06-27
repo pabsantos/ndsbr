@@ -108,8 +108,7 @@ nds_create_points <- function(data, x, y, valid = "all") {
 
   if (valid == "yes") {
     data <- data %>%
-      dplyr::filter(.data$VALID_TIME == "Yes") %>%
-      dplyr::filter(.data$NOME_RUA != "NPI")
+      dplyr::filter(.data$VALID_TIME == "Yes")
   }
 
   data %>%

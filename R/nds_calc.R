@@ -51,7 +51,7 @@ nds_calc_time <- function(data, by, units = "seconds", valid = "all") {
 
   if (valid == "yes") {
     data <- data %>%
-      dplyr::filter(.data$VALID_TIME == "Yes" & .data$NOME_RUA != "NPI")
+      dplyr::filter(.data$VALID_TIME == "Yes")
   }
 
   return(data)
