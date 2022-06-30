@@ -120,7 +120,7 @@ nds_calc_dist <- function(data, geom, by, units = "meters") {
 
 #' Calculate speeding rate from the naturalistic data
 #'
-#' \code{nds_calc_distance} extracts the speeding rate from the
+#' \code{nds_calc_speeding} extracts the speeding rate from the
 #' naturalistic data
 #'
 #' This function uses the naturalistic data as main

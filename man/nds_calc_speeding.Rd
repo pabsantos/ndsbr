@@ -25,7 +25,7 @@ nds_calc_speeding(data, type, by, spd, exp, percentage = FALSE)
 A tibble with speeding rate results
 }
 \description{
-\code{nds_calc_distance} extracts the speeding rate from the
+\code{nds_calc_speeding} extracts the speeding rate from the
 naturalistic data
 }
 \details{
