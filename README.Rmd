@@ -35,6 +35,8 @@ This package privides two main categories of functions: `nds_create` and `nds_ca
 
 `nds_load_data` is used to load naturalistic data and `nds_download_sf` can be used to download spatial data and import into the project environment. 
 
+A brief presentation (in portuguese) about `ndsbr` can be [accessed here](https://rpubs.com/pabsantos/stpr_ndsbr).
+
 ## Installation
 
 You can install the current version of ndsbr like so:
