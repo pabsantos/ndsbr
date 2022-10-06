@@ -1,3 +1,7 @@
+# ndsbr 0.2.0
+
+* Added a new set data related to participants characteristics: `ndsdrivers`
+
 # ndsbr 0.1.5
 
 * Fixed an error in `nds_calc_speeding` documentation.
