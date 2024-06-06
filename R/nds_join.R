@@ -95,6 +95,35 @@ nds_join_axis <- function(
 #'
 #' @examples
 nds_join_neigh <- function(ndsbr_data, neigh_data, vars = "NOME") {
+
+  if (missing(ndsbr_data)) {
+    stop("'ndsbr_data' is missing")
+  }
+
+  if (missing(neigh_data)) {
+    stop("'neigh_data' is missing")
+  }
+
+  if (!"sf" %in% class(ndsbr_data)) {
+    stop("'ndsbr_data' is not a 'sf' object")
+  }
+
+  if (!"sf" %in% class(neigh_data)) {
+    stop("'neigh_data' is not a 'sf' object")
+  }
+
+  if (class(vars) != "character") {
+    stop("'vars' is not a 'character' object")
+  }
+
+  if (sf::st_geometry_type(ndsbr_data)[1] != "POINT") {
+    stop("Invalid 'ndsbr_data' geometry type")
+  }
+
+  if (sf::st_geometry_type(neigh_data)[1] != "POLYGON") {
+    stop("Invalid 'neigh_data' geometry type")
+  }
+
   if (sf::st_crs(neigh_data)$input != "EPSG:4674") {
     neigh_data <- sf::st_transform(neigh_data, 4674)
   }
