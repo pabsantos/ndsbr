@@ -148,6 +148,35 @@ nds_join_neigh <- function(ndsbr_data, neigh_data, vars = "NOME") {
 #' @examples
 nds_join_spdlimit <- function(ndsbr_data, osm_data, vars = "maxspeed") {
 
+  if (missing(ndsbr_data)) {
+    stop("'ndsbr_data' is missing")
+  }
+
+  if (missing(osm_data)) {
+    stop("'osm_data' is missing")
+  }
+
+  if (!"sf" %in% class(ndsbr_data)) {
+    stop("'ndsbr_data' is not a 'sf' object")
+  }
+
+  if (!"sf" %in% class(osm_data)) {
+    stop("'osm_data' is not a 'sf' object")
+  }
+
+  if (class(vars) != "character") {
+    stop("'vars' is not a 'character' object")
+  }
+
+  if (sf::st_geometry_type(ndsbr_data)[1] != "POINT") {
+    stop("Invalid 'ndsbr_data' geometry type")
+  }
+
+  axis_type <- c("LINESTRING", "MULTILINESTRING")
+  if (!sf::st_geometry_type(osm_data)[1] %in% axis_type) {
+    stop("Invalid 'osm_data' geometry type")
+  }
+
   message("Making a 10-meter buffer around axis data...")
 
   osm_data <- subset(osm_data, select = vars)

@@ -99,3 +99,54 @@ test_that(
     expect_true("sf" %in% class(nds_join_neigh(ndsbr_data_sf, ippuc_neigh)))
   }
 )
+
+# nds_join_spdlimit() -----------------------------------------------------
+
+test_that(
+  "nds_join_spdlimit() throws missing errors", {
+    expect_error(
+      nds_join_spdlimit(osm_data = osm_data),
+      "'ndsbr_data' is missing"
+    )
+    expect_error(
+      nds_join_spdlimit(ndsbr_data_sf),
+      "'osm_data' is missing"
+    )
+  }
+)
+
+test_that(
+  "nds_join_spdlimit() throws invalid class errors", {
+    expect_error(
+      nds_join_spdlimit(ndsbr_data = "xyz", osm_data),
+      "'ndsbr_data' is not a 'sf' object"
+    )
+    expect_error(
+      nds_join_spdlimit(ndsbr_data_sf, osm_data = "xyz"),
+      "'osm_data' is not a 'sf' object"
+    )
+    expect_error(
+      nds_join_spdlimit(ndsbr_data_sf, osm_data, c(1, 2, 3)),
+      "'vars' is not a 'character' object"
+    )
+  }
+)
+
+test_that(
+  "nds_join_spdlimit() returns invalid 'geometry' errors", {
+    expect_error(
+      nds_join_spdlimit(ndsbr_data = ippuc_road_axis, osm_data = osm_data),
+      "Invalid 'ndsbr_data' geometry type"
+    )
+    expect_error(
+      nds_join_spdlimit(ndsbr_data_sf, osm_data = ndsbr_data_sf),
+      "Invalid 'osm_data' geometry type"
+    )
+  }
+)
+
+test_that(
+  "nds_join_spdlimit() returns a valid 'sf' object", {
+    expect_true("sf" %in% class(nds_join_spdlimit(ndsbr_data_sf, ippuc_neigh)))
+  }
+)
