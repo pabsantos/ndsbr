@@ -12,6 +12,37 @@ nds_join_axis <- function(
     ndsbr_data,
     road_axis,
     axis_vars = c("NMVIA", "SVIARIO", "HIERARQUIA")) {
+
+  if (missing(ndsbr_data)) {
+    stop("'ndsbr_data' is missing")
+  }
+
+  if (missing(road_axis)) {
+    stop("'road_axis' is missing")
+  }
+
+  if (!"sf" %in% class(ndsbr_data)) {
+    stop("'ndsbr_data' is not a 'sf' object")
+  }
+
+  if (!"sf" %in% class(road_axis)) {
+    stop("'road_axis' is not a 'sf' object")
+  }
+
+  if (class(axis_vars) != "character") {
+    stop("'axis_vars' is not a 'character' object")
+  }
+
+
+  if (sf::st_geometry_type(ndsbr_data)[1] != "POINT") {
+    stop("Invalid 'ndsbr_data' geometry type")
+  }
+
+  axis_type <- c("LINESTRING", "MULTILINESTRING")
+  if (!sf::st_geometry_type(road_axis)[1] %in% axis_type) {
+    stop("Invalid 'road_axis' geometry type")
+  }
+
   message("Making a 10-meter buffer around axis data...")
 
   road_axis_buffer <- sf::st_buffer(road_axis, dist = 10, endCapStyle = "FLAT")
@@ -19,6 +50,8 @@ nds_join_axis <- function(
   if (sf::st_crs(road_axis_buffer)$input != "EPSG:4674") {
     road_axis_buffer <- sf::st_transform(road_axis_buffer, 4674)
   }
+
+  road_axis_buffer <- sf::st_make_valid(road_axis_buffer)
 
   road_axis_buffer <- subset(road_axis_buffer, select = axis_vars)
 
