@@ -1,13 +1,20 @@
-#' Title
+#' Join NDS data with road axis data
 #'
-#' @param ndsbr_data
-#' @param road_axis
-#' @param axis_vars
+#' This function joins NDS data with road axis data, including a 10-meter buffer
+#' around axis data and arranging names and road hierarchy data.
 #'
-#' @return
+#' @param ndsbr_data An `sf` object representing NDS data. This object
+#' should have a `POINT` geometry type.
+#' @param road_axis An `sf` object representing road axis data. This object
+#' should have a `LINESTRING` or `MULTILINESTRING` geometry type.
+#' @param axis_vars A character vector of variables to join from the road axis
+#' data. Default is `c("NMVIA", "SVIARIO", "HIERARQUIA")`.
+#'
+#' @return An `sf` object with the joined data.
 #' @export
 #'
 #' @examples
+#' result <- nds_join_axis(ndsbr_data_sf, ippuc_road_axis)
 nds_join_axis <- function(
     ndsbr_data,
     road_axis,
@@ -84,16 +91,24 @@ nds_join_axis <- function(
   return(nds_joined_data)
 }
 
-#' Title
+#' Join NDS data with neighborhood data
 #'
-#' @param ndsbr_data
-#' @param neigh_data
-#' @param vars
+#' This function joins NDS data with neighborhood data, ensuring the correct
+#' spatial reference and geometry types.
 #'
-#' @return
+#' @param ndsbr_data An `sf` object representing NDS data. This object should
+#' have a `POINT` geometry type.
+#' @param neigh_data An `sf` object representing neighborhood data. This object
+#' should have a `POLYGON` geometry type.
+#' @param vars A character vector of variables to join from the neighborhood
+#' data. Default is `"NOME"`.
+#'
+#' @return An `sf` object with the joined data, including neighborhood
+#' information.
 #' @export
 #'
 #' @examples
+#' result <- nds_join_neigh(ndsbr_data_sf, ippuc_neigh)
 nds_join_neigh <- function(ndsbr_data, neigh_data, vars = "NOME") {
 
   if (missing(ndsbr_data)) {
@@ -137,15 +152,25 @@ nds_join_neigh <- function(ndsbr_data, neigh_data, vars = "NOME") {
   return(nds_joined_data)
 }
 
-#' Title
+#' Join NDS data with OSM speed limit data
 #'
-#' @param ndsbr_data
-#' @param osm_data
+#' This function joins NDS data with OSM speed limit data,
+#' including a 10-meter buffer around axis data and arranging speed limit
+#' information.
 #'
-#' @return
+#' @param ndsbr_data An `sf` object representing NDS data.
+#' This object should have a `POINT` geometry type.
+#' @param osm_data An `sf` object representing OSM data.
+#' This object should have a `LINESTRING` or `MULTILINESTRING` geometry type.
+#' @param vars A character vector of variables to join from the OSM data.
+#' Default is `"maxspeed"`.
+#'
+#' @return An `sf` object with the joined data,
+#' including speed limit information.
 #' @export
 #'
 #' @examples
+#' result <- nds_join_spdlimit(ndsbr_data_sf, osm_data)
 nds_join_spdlimit <- function(ndsbr_data, osm_data, vars = "maxspeed") {
 
   if (missing(ndsbr_data)) {

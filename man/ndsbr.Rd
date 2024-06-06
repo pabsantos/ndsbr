@@ -2,6 +2,7 @@
 % Please edit documentation in R/ndsbr.R
 \docType{package}
 \name{ndsbr}
+\alias{ndsbr-package}
 \alias{ndsbr}
 \title{\code{ndsbr}: Load, Analyze and Manipulate Data of The Brazilian
 Naturalistic Driving Study}
@@ -40,3 +41,7 @@ variables, such as speeding. These functions are:
 }
 }
 
+\author{
+\strong{Maintainer}: Pedro Augusto Borges dos Santos \email{pabsantos21@gmail.com}
+
+}
