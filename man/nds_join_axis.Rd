@@ -28,5 +28,8 @@ This function joins NDS data with road axis data, including a 10-meter buffer
 around axis data and arranging names and road hierarchy data.
 }
 \examples{
+\dontrun{
 result <- nds_join_axis(ndsbr_data_sf, ippuc_road_axis)
+}
+
 }

@@ -14,7 +14,10 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' result <- nds_join_axis(ndsbr_data_sf, ippuc_road_axis)
+#' }
+#'
 nds_join_axis <- function(
     ndsbr_data,
     road_axis,
@@ -28,15 +31,15 @@ nds_join_axis <- function(
     stop("'road_axis' is missing")
   }
 
-  if (!"sf" %in% class(ndsbr_data)) {
+  if (!inherits(ndsbr_data, "sf")) {
     stop("'ndsbr_data' is not a 'sf' object")
   }
 
-  if (!"sf" %in% class(road_axis)) {
+  if (!inherits(road_axis, "sf")) {
     stop("'road_axis' is not a 'sf' object")
   }
 
-  if (class(axis_vars) != "character") {
+  if (!inherits(axis_vars, "character")) {
     stop("'axis_vars' is not a 'character' object")
   }
 
@@ -51,6 +54,10 @@ nds_join_axis <- function(
   }
 
   message("Making a 10-meter buffer around axis data...")
+
+  if (sf::st_crs(road_axis)$input != "EPGS:31982") {
+    road_axis <- sf::st_transform(road_axis, 31982)
+  }
 
   road_axis_buffer <- sf::st_buffer(road_axis, dist = 10, endCapStyle = "FLAT")
 
@@ -119,15 +126,15 @@ nds_join_neigh <- function(ndsbr_data, neigh_data, vars = "NOME") {
     stop("'neigh_data' is missing")
   }
 
-  if (!"sf" %in% class(ndsbr_data)) {
+  if (!inherits(ndsbr_data, "sf")) {
     stop("'ndsbr_data' is not a 'sf' object")
   }
 
-  if (!"sf" %in% class(neigh_data)) {
+  if (!inherits(neigh_data, "sf")) {
     stop("'neigh_data' is not a 'sf' object")
   }
 
-  if (class(vars) != "character") {
+  if (!inherits(vars, "character")) {
     stop("'vars' is not a 'character' object")
   }
 
@@ -170,7 +177,11 @@ nds_join_neigh <- function(ndsbr_data, neigh_data, vars = "NOME") {
 #' @export
 #'
 #' @examples
-#' result <- nds_join_spdlimit(ndsbr_data_sf, osm_data)
+#' \dontrun{
+#' cwb_osm <- nds_download_cwb_osm()
+#' result <- nds_join_spdlimit(ndsbr_data_sf, cwb_osm)
+#' }
+#'
 nds_join_spdlimit <- function(ndsbr_data, osm_data, vars = "maxspeed") {
 
   if (missing(ndsbr_data)) {
@@ -181,15 +192,15 @@ nds_join_spdlimit <- function(ndsbr_data, osm_data, vars = "maxspeed") {
     stop("'osm_data' is missing")
   }
 
-  if (!"sf" %in% class(ndsbr_data)) {
+  if (!inherits(ndsbr_data, "sf")) {
     stop("'ndsbr_data' is not a 'sf' object")
   }
 
-  if (!"sf" %in% class(osm_data)) {
+  if (!inherits(osm_data, "sf")) {
     stop("'osm_data' is not a 'sf' object")
   }
 
-  if (class(vars) != "character") {
+  if (!inherits(vars, "character")) {
     stop("'vars' is not a 'character' object")
   }
 
@@ -205,6 +216,11 @@ nds_join_spdlimit <- function(ndsbr_data, osm_data, vars = "maxspeed") {
   message("Making a 10-meter buffer around axis data...")
 
   osm_data <- subset(osm_data, select = vars)
+
+  if (sf::st_crs(osm_data)$input != "EPGS:31982") {
+    osm_data <- sf::st_transform(osm_data, 31982)
+  }
+
   osm_data_buffer <- sf::st_buffer(osm_data, dist = 10, endCapStyle = "FLAT")
 
   message("Joining data...")

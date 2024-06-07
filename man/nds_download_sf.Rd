@@ -4,10 +4,12 @@
 \alias{nds_download_sf}
 \title{Download spatial data}
 \usage{
-nds_download_sf(url)
+nds_download_sf(url, ...)
 }
 \arguments{
 \item{url}{Download url.}
+
+\item{...}{Parameters passed to `sf::st_read()`}
 }
 \value{
 A \code{sf} object.

@@ -4,6 +4,7 @@
 #' extracts into a \code{sf} object.
 #'
 #' @param url Download url.
+#' @param ... Parameters passed to `sf::st_read()`
 #'
 #' @return A \code{sf} object.
 #' @export
@@ -11,22 +12,29 @@
 #' @examples
 #' url <- "https://ippuc.org.br/geodownloads/SHAPES_SIRGAS/EIXO_RUA_SIRGAS.zip"
 #' road <- nds_download_sf(url)
-nds_download_sf <- function(url) {
+nds_download_sf <- function(url, ...) {
   temp <- tempfile()
   temp2 <- tempfile()
   utils::download.file(url, destfile = temp)
   utils::unzip(zipfile = temp, exdir = temp2)
-  file <- sf::st_read(temp2)
+  file <- sf::st_read(temp2, ...)
   unlink(c(temp, temp2))
   return(file)
 }
 
-#' Title
+#' Download OSM data for Curitiba, Brazil
 #'
-#' @return
+#' This function downloads OpenStreetMap (OSM) data for Curitiba, Brazil,
+#' and extracts relevant road information.
+#'
+#' @return An `sf` object containing the OSM data for roads in Curitiba, Brazil,
+#' with selected variables.
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' cwb_osm_data <- nds_download_cwb_osm()
+#' }
 nds_download_cwb_osm <- function() {
   message("Downloading OSM data...")
   cwb_bbox <- osmdata::getbb("Curitiba, Brazil")
@@ -39,7 +47,7 @@ nds_download_cwb_osm <- function() {
     osmdata::add_osm_feature(key = "highway", value = values) |>
     osmdata::osmdata_sf()
   cwb_axis <- osm_cwb$osm_lines
-  selected_vars <- c("osm_id", "name", "highway", "maxspeed")
+  selected_vars <- c("osm_id", "highway", "maxspeed")
   cwb_axis <- subset(cwb_axis, select = selected_vars)
   return(cwb_axis)
 }

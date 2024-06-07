@@ -26,5 +26,9 @@ including a 10-meter buffer around axis data and arranging speed limit
 information.
 }
 \examples{
-result <- nds_join_spdlimit(ndsbr_data_sf, osm_data)
+\dontrun{
+cwb_osm <- nds_download_cwb_osm()
+result <- nds_join_spdlimit(ndsbr_data_sf, cwb_osm)
+}
+
 }

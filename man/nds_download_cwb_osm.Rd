@@ -2,10 +2,20 @@
 % Please edit documentation in R/nds_download.R
 \name{nds_download_cwb_osm}
 \alias{nds_download_cwb_osm}
-\title{Title}
+\title{Download OSM data for Curitiba, Brazil}
 \usage{
 nds_download_cwb_osm()
 }
+\value{
+An `sf` object containing the OSM data for roads in Curitiba, Brazil,
+with selected variables.
+}
 \description{
-Title
+This function downloads OpenStreetMap (OSM) data for Curitiba, Brazil,
+and extracts relevant road information.
+}
+\examples{
+\dontrun{
+cwb_osm_data <- nds_download_cwb_osm()
+}
 }
