@@ -1,3 +1,24 @@
+# ndsbr 0.3.0
+
+New features added: 
+
+## nds_join functions
+
+- `nds_join_roadaxis()`
+- `nds_join_neigh()`
+- `nds_join_spdlimit()`
+
+## nds_download new function
+
+- `nds_download_cwb_osm()`
+
+## Example datasets
+
+- `ndsbr_data_sf`
+- `ippuc_road_axis`
+- `ippuc_neigh`
+- `osm_data`
+
 # ndsbr 0.2.0
 
 * Added a new set data related to participants characteristics: `ndsdrivers`
