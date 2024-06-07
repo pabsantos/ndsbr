@@ -2,7 +2,7 @@ Type: Package
 Package: ndsbr
 Title: Load, Analyze and Manipulate Data of The Brazilian Naturalistic
     Driving Study
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: 
     person("Pedro Augusto", "Borges dos Santos", email = "pabsantos21@gmail.com", role = c("aut", "cre"))
 Description: A compilation of methods used in the Brazilian Naturalistic
