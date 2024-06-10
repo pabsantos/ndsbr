@@ -9,7 +9,7 @@ nds_download_sf(url, ...)
 \arguments{
 \item{url}{Download url.}
 
-\item{...}{Parameters passed to `sf::st_read()`}
+\item{...}{Parameters passed to \code{sf::st_read()}}
 }
 \value{
 A \code{sf} object.

@@ -7,17 +7,17 @@
 nds_join_spdlimit(ndsbr_data, osm_data, vars = "maxspeed")
 }
 \arguments{
-\item{ndsbr_data}{An `sf` object representing NDS data.
-This object should have a `POINT` geometry type.}
+\item{ndsbr_data}{An \code{sf} object representing NDS data.
+This object should have a \code{POINT} geometry type.}
 
-\item{osm_data}{An `sf` object representing OSM data.
-This object should have a `LINESTRING` or `MULTILINESTRING` geometry type.}
+\item{osm_data}{An \code{sf} object representing OSM data.
+This object should have a \code{LINESTRING} or \code{MULTILINESTRING} geometry type.}
 
 \item{vars}{A character vector of variables to join from the OSM data.
-Default is `"maxspeed"`.}
+Default is \code{"maxspeed"}.}
 }
 \value{
-An `sf` object with the joined data,
+An \code{sf} object with the joined data,
 including speed limit information.
 }
 \description{

@@ -15,10 +15,12 @@ nds_split_data(data, driver = .data$DRIVER)
 A list with four tibbles of the NDS-BR dataset.
 }
 \description{
-This function splits the naturalistic data into the original separation of
-the NDS-BR sample.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 }
 \details{
+This function splits the naturalistic data into the original separation of
+the NDS-BR sample.
+
 \code{nds_split_data} takes the naturalistic data imported by
 \link{nds_load_data} and splits into four tibbles, matching the original
 separation of drivers provided by the sample of NDS-BR. The function uses

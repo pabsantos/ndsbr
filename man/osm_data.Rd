@@ -5,12 +5,12 @@
 \alias{osm_data}
 \title{OSM Road Network Data for Curitiba}
 \format{
-A data frame and `sf` object with 27,150 observations and 4 variables:
+A data frame and \code{sf} object with 27,150 observations and 4 variables:
 \describe{
-  \item{osm_id}{chr. The unique identifier for each road segment in OSM.}
-  \item{highway}{chr. The type of road (e.g., trunk, primary, residential).}
-  \item{maxspeed}{chr. The maximum speed limit for the road segment, in km/h.}
-  \item{geometry}{sfc_LINESTRING. The spatial geometry of the road segment.}
+\item{osm_id}{chr. The unique identifier for each road segment in OSM.}
+\item{highway}{chr. The type of road (e.g., trunk, primary, residential).}
+\item{maxspeed}{chr. The maximum speed limit for the road segment, in km/h.}
+\item{geometry}{sfc_LINESTRING. The spatial geometry of the road segment.}
 }
 }
 \source{

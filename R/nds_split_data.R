@@ -1,5 +1,7 @@
 #' Split naturalistic data into the original files
 #'
+#' `r lifecycle::badge('deprecated')`
+#'
 #' This function splits the naturalistic data into the original separation of
 #' the NDS-BR sample.
 #'

@@ -11,6 +11,7 @@ Description: A compilation of methods used in the Brazilian Naturalistic
 License: MIT + file LICENSE
 Imports: 
     dplyr,
+    lifecycle,
     magrittr,
     osmdata,
     purrr,
@@ -30,3 +31,4 @@ VignetteBuilder: knitr
 Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
+Roxygen: list(markdown = TRUE)

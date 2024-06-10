@@ -7,17 +7,17 @@
 nds_join_neigh(ndsbr_data, neigh_data, vars = "NOME")
 }
 \arguments{
-\item{ndsbr_data}{An `sf` object representing NDS data. This object should
-have a `POINT` geometry type.}
+\item{ndsbr_data}{An \code{sf} object representing NDS data. This object should
+have a \code{POINT} geometry type.}
 
-\item{neigh_data}{An `sf` object representing neighborhood data. This object
-should have a `POLYGON` geometry type.}
+\item{neigh_data}{An \code{sf} object representing neighborhood data. This object
+should have a \code{POLYGON} geometry type.}
 
 \item{vars}{A character vector of variables to join from the neighborhood
-data. Default is `"NOME"`.}
+data. Default is \code{"NOME"}.}
 }
 \value{
-An `sf` object with the joined data, including neighborhood
+An \code{sf} object with the joined data, including neighborhood
 information.
 }
 \description{
