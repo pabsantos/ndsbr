@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # ndsbr <img src="man/figures/README-ndsbr.png" align="right" width="160" />
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/pabsantos/ndsbr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pabsantos/ndsbr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of ndsbr is to help you **load**, **manipulate** and **analyze** the data sample of the [Brazilian Naturalistic Driving Study (NDS-BR)](http://www.tecnologia.ufpr.br/portal/ceppur/estudo-naturalistico-de-direcao-brasileiro/).
