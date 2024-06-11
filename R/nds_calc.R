@@ -170,6 +170,10 @@ nds_calc_speeding <- function(data, type, by, spd, exp, percentage = FALSE) {
     stop("'exp' is missing")
   }
 
+  if (!type %in% c("distance",  "time")) {
+    stop("Invalid 'type'")
+  }
+
   data <- data %>%
     dplyr::filter(.data$LIMITE_VEL != "NPI") %>%
     dplyr::mutate(LIMITE_VEL = as.double(.data$LIMITE_VEL))

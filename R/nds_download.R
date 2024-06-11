@@ -15,11 +15,22 @@
 nds_download_sf <- function(url, ...) {
   temp <- tempfile()
   temp2 <- tempfile()
-  utils::download.file(url, destfile = temp)
-  utils::unzip(zipfile = temp, exdir = temp2)
-  file <- sf::st_read(temp2, ...)
-  unlink(c(temp, temp2))
-  return(file)
+
+  on.exit({
+    unlink(c(temp, temp2), recursive = TRUE)
+  }, add = TRUE)
+
+  tryCatch({
+    utils::download.file(url, destfile = temp, mode = "wb")
+    utils::unzip(zipfile = temp, exdir = temp2)
+    file <- sf::st_read(temp2, ...)
+    return(file)
+  }, error = function(e) {
+    stop(
+      "An error occurred while downloading or reading the spatial data: ",
+      e$message
+    )
+  })
 }
 
 #' Download OSM data for Curitiba, Brazil
