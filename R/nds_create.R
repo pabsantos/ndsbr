@@ -64,7 +64,7 @@ nds_create_lines <- function(data, x, y, valid = "all") {
     ) %>%
     dplyr::filter(.data$wkt_lines != "0") %>%
     sf::st_as_sf(wkt = "wkt_lines") %>%
-    dplyr::select(-.data$time_lag, -.data$wkt_lines) %>%
+    dplyr::select(-"time_lag", -"wkt_lines") %>%
     sf::st_set_crs(4674)
 }
 
