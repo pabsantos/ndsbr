@@ -5,18 +5,18 @@
 \alias{ippuc_neigh}
 \title{Neighborhood Boundaries Data for Curitiba}
 \format{
-A data frame and `sf` object with 75 observations and 10 variables:
+A data frame and \code{sf} object with 75 observations and 10 variables:
 \describe{
-  \item{OBJECTID}{num. The unique identifier for each neighborhood boundary object.}
-  \item{CODIGO}{num. The code representing the neighborhood.}
-  \item{TIPO}{chr. The type of boundary, here it is "DIVISA DE BAIRROS".}
-  \item{NOME}{chr. The name of the neighborhood.}
-  \item{FONTE}{chr. The source of the boundary information, usually a municipal decree.}
-  \item{CD_REGIONA}{num. The code representing the region to which the neighborhood belongs.}
-  \item{NM_REGIONA}{chr. The name of the region to which the neighborhood belongs.}
-  \item{SHAPE_AREA}{num. The area of the neighborhood in square meters.}
-  \item{SHAPE_LEN}{num. The perimeter length of the neighborhood in meters.}
-  \item{geometry}{sfc_POLYGON. The spatial geometry of the neighborhood boundary.}
+\item{OBJECTID}{num. The unique identifier for each neighborhood boundary object.}
+\item{CODIGO}{num. The code representing the neighborhood.}
+\item{TIPO}{chr. The type of boundary, here it is "DIVISA DE BAIRROS".}
+\item{NOME}{chr. The name of the neighborhood.}
+\item{FONTE}{chr. The source of the boundary information, usually a municipal decree.}
+\item{CD_REGIONA}{num. The code representing the region to which the neighborhood belongs.}
+\item{NM_REGIONA}{chr. The name of the region to which the neighborhood belongs.}
+\item{SHAPE_AREA}{num. The area of the neighborhood in square meters.}
+\item{SHAPE_LEN}{num. The perimeter length of the neighborhood in meters.}
+\item{geometry}{sfc_POLYGON. The spatial geometry of the neighborhood boundary.}
 }
 }
 \source{

@@ -2,19 +2,19 @@
 #'
 #' A table with information about the drivers which participated in NDS-BR
 #'
-#' @format ## `ndsdrivers`
-#' A tibble with 32 rows and 10 columns:
+#' @format A data frame with 40 rows and 11 variables:
 #' \describe{
-#'   \item{DRIVER}{Driver alphabetic code}
-#'   \item{SEX}{Driver sex}
-#'   \item{AGE}{Age of the driver during the data collection}
-#'   \item{DAYS}{Duration of the driver participation in days}
-#'   \item{APP_DRIVER}{Boolean indicating if the driver participated as a app driver}
-#'   \item{LICENSE_AGE}{Year in which the driver obtained its driver's license}
-#'   \item{BRAND}{Brand of the driver's vehicle}
-#'   \item{MODEL}{Model of the driver's vehicle}
-#'   \item{MODEL_YEAR}{Model year of the driver's vehicle}
-#'   \item{HP}{Horsepower of the driver's vehicle}
+#'   \item{driver_id}{<chr> Unique identifier for each driver, e.g., "A", "B", "C".}
+#'   \item{sex}{<chr> Gender of the driver, e.g., "F" for female, "M" for male.}
+#'   \item{age}{<int> Age of the driver, e.g., 32, 39, 20.}
+#'   \item{license_type}{<chr> Type of driver's license, e.g., "B", "AB", "D".}
+#'   \item{vehicle_age}{<int> Year of the vehicle's manufacture, e.g., 2012, 2010, 2011.}
+#'   \item{app_driver}{<lgl> Indicates if the driver is an app driver, e.g., TRUE or FALSE.}
+#'   \item{license_date}{<date> Date when the driver was issued their license, e.g., 2009-12-17.}
+#'   \item{vehicle_brand}{<chr> Brand of the vehicle, e.g., "Chevrolet", "Renault", "VW".}
+#'   \item{vehicle_model}{<chr> Model of the vehicle, e.g., "Prisma 1.4L LT", "Scenic PRI 1616V".}
+#'   \item{vehicle_hp}{<chr> Horsepower of the vehicle, extracted from strings like "5P/97CV".}
+#'   \item{vehicle_transmission}{<chr> Type of vehicle transmission, e.g., "manual", "auto".}
 #' }
 
 "ndsdrivers"

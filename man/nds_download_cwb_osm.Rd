@@ -7,7 +7,7 @@
 nds_download_cwb_osm()
 }
 \value{
-An `sf` object containing the OSM data for roads in Curitiba, Brazil,
+An \code{sf} object containing the OSM data for roads in Curitiba, Brazil,
 with selected variables.
 }
 \description{

@@ -1,3 +1,9 @@
+# ndsbr 0.3.1
+
+* Update `ndsdrivers` dataset (#5)
+
+* `nds_split_data()` is now deprecated (#3)
+
 # ndsbr 0.3.0
 
 New features added: 

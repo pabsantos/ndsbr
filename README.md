@@ -4,6 +4,8 @@
 # ndsbr <img src="man/figures/README-ndsbr.png" align="right" width="160" />
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/pabsantos/ndsbr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pabsantos/ndsbr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of ndsbr is to help you **load**, **manipulate** and
@@ -57,20 +59,19 @@ nds_data <- nds_load_data("driver", path)
 
 head(nds_data, n = 5)
 #> # A tibble: 5 × 34
-#>   DRIVER  LONG   LAT DAY     DAY_C…¹ 03:00…²  TRIP ID    PR        H     M     S
-#>   <chr>  <dbl> <dbl> <chr>   <chr>   <chr>   <dbl> <chr> <chr> <dbl> <dbl> <dbl>
-#> 1 A      -49.2 -25.5 26/8/2… 26/8/2… 22:17:…     5 A05   19:1…    NA    NA    NA
-#> 2 A      -49.2 -25.5 26/8/2… 26/8/2… 22:17:…     5 A05   19:1…     0     0     1
-#> 3 A      -49.2 -25.5 26/8/2… 26/8/2… 22:17:…     5 A05   19:1…     0     0     1
-#> 4 A      -49.2 -25.5 26/8/2… 26/8/2… 22:17:…     5 A05   19:1…     0     0     1
-#> 5 A      -49.2 -25.5 26/8/2… 26/8/2… 22:17:…     5 A05   19:1…     0     0     1
-#> # … with 22 more variables: TIME_ACUM <dbl>, SPD_MPH <dbl>, SPD_KMH <dbl>,
-#> #   ACEL_MS2 <dbl>, HEADING <dbl>, ALTITUDE_FT <dbl>, VALID_TIME <chr>,
-#> #   TIMESTAMP_GPS <chr>, CPOOL <chr>, CPOOLING_CHECKED <chr>, WSB <chr>,
-#> #   UMP_YN <chr>, UMP <chr>, PICK_UP <chr>, ACTION <chr>, GPS_FILE <chr>,
-#> #   CIDADE <chr>, BAIRRO <chr>, NOME_RUA <chr>, HIERARQUIA_CWB <chr>,
-#> #   HIERARQUIA_CTB <chr>, LIMITE_VEL <chr>, and abbreviated variable names
-#> #   ¹​DAY_CORRIGIDO, ²​`03:00:00`
+#>   DRIVER  LONG   LAT DAY       DAY_CORRIGIDO `03:00:00`  TRIP ID    PR         H
+#>   <chr>  <dbl> <dbl> <chr>     <chr>         <chr>      <dbl> <chr> <chr>  <dbl>
+#> 1 A      -49.2 -25.5 26/8/2019 26/8/2019     22:17:27       5 A05   19:17…    NA
+#> 2 A      -49.2 -25.5 26/8/2019 26/8/2019     22:17:28       5 A05   19:17…     0
+#> 3 A      -49.2 -25.5 26/8/2019 26/8/2019     22:17:29       5 A05   19:17…     0
+#> 4 A      -49.2 -25.5 26/8/2019 26/8/2019     22:17:30       5 A05   19:17…     0
+#> 5 A      -49.2 -25.5 26/8/2019 26/8/2019     22:17:31       5 A05   19:17…     0
+#> # ℹ 24 more variables: M <dbl>, S <dbl>, TIME_ACUM <dbl>, SPD_MPH <dbl>,
+#> #   SPD_KMH <dbl>, ACEL_MS2 <dbl>, HEADING <dbl>, ALTITUDE_FT <dbl>,
+#> #   VALID_TIME <chr>, TIMESTAMP_GPS <chr>, CPOOL <chr>, CPOOLING_CHECKED <chr>,
+#> #   WSB <chr>, UMP_YN <chr>, UMP <chr>, PICK_UP <chr>, ACTION <chr>,
+#> #   GPS_FILE <chr>, CIDADE <chr>, BAIRRO <chr>, NOME_RUA <chr>,
+#> #   HIERARQUIA_CWB <chr>, HIERARQUIA_CTB <chr>, LIMITE_VEL <chr>
 ```
 
 Creating a sf object with linestring geometry using `nds_create_lines`

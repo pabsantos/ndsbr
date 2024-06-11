@@ -11,17 +11,17 @@ nds_join_axis(
 )
 }
 \arguments{
-\item{ndsbr_data}{An `sf` object representing NDS data. This object
-should have a `POINT` geometry type.}
+\item{ndsbr_data}{An \code{sf} object representing NDS data. This object
+should have a \code{POINT} geometry type.}
 
-\item{road_axis}{An `sf` object representing road axis data. This object
-should have a `LINESTRING` or `MULTILINESTRING` geometry type.}
+\item{road_axis}{An \code{sf} object representing road axis data. This object
+should have a \code{LINESTRING} or \code{MULTILINESTRING} geometry type.}
 
 \item{axis_vars}{A character vector of variables to join from the road axis
-data. Default is `c("NMVIA", "SVIARIO", "HIERARQUIA")`.}
+data. Default is \code{c("NMVIA", "SVIARIO", "HIERARQUIA")}.}
 }
 \value{
-An `sf` object with the joined data.
+An \code{sf} object with the joined data.
 }
 \description{
 This function joins NDS data with road axis data, including a 10-meter buffer

@@ -1,0 +1,41 @@
+Driver;Sexo;Idade;Categoria;Data de Nascimento;Categoria CNH;1ª Habilitação;Marca/Modelo;Ano Modelo;Cap/Pot/Cil;Cambio
+Driver_A;F;32;Habitual;21/06/1988;B;17/12/2009;Chevrolet/Prisma 1.4L LT;2012;5P/97CV;Manual
+Driver_B;M;39;Habitual;09/05/1981;B;20/11/2018;Renault/Scenic PRI 1616V;2010;5P/115CV;Manual
+Driver_C;M;20;Habitual;02/11/1999;B;26/11/2018;VW/FOX 1.6 PRIME GII;2011;5P/104CV;Manual
+Driver_D;M;24;Habitual;12/10/1996;B;23/10/2015;GM/Zafira CD;2003;7P/116CV;Manual
+Driver_E;F;27;Habitual;4/10/95;AB;17/09/2013;VW/Gol 1.0;2008;5P/72CV;Manual
+Driver_F;F;41;Habitual;17/08/1981;B;17/09/2014;Nissan/Livina 16S;2012;5P/108CV;Manual
+Driver_G;F;61;Habitual;03/04/1961;B;18/08/1998;Renault/Sandero EXP1016V;2014;5P/77CV;Manual
+Driver_H;M;33;Habitual;27/12/1988;B;20/01/2012;Fiat/Siena ELX Flex;2006;5P/80CV;Manual
+Driver_I;F;29;Habitual;29/10/1992;B;20/05/2011;Renault/Sandero Step 16R;2015;5P/106CV;Automático
+Driver_J;F;39;Habitual;04/10/1980;B;24/11/1998;VW/Fox 1.0 GII;2014;5P/76CV;Manual
+Driver_K;M;26;Habitual;19/10/1993;AB;22/02/2012;I/Citroen DS3 Turbo165M6;2013;5P/165CV;Manual
+Driver_L;M;45;Habitual; ;B;04/07/2003;Fiat/Bravo Essence Dual;2011;5P/132CV;Manual
+Driver_M;F;32;Habitual;15/07/1989;B;31/10/2011;Chevrolet/Onix 1 OMT LS;2015;5P/80CV;Manual
+Driver_N;M;29;Habitual;22/05/1992;B;27/01/2012;Fiat/Mobi Like;2019;5P/75CV;Manual
+Driver_O;M;62;Habitual;30/08/1959;B;26/04/1984;Renault/Kwid Zen 1OMT;2018;5P/70CV;Manual
+Driver_P;F;28;Habitual;24/07/1993;B;19/09/2011;VW/Fox 1.0 GII;2012;5P/76CV;Manual
+Driver_Q;F;46;Habitual;08/02/1976;D;18/10/1995;Renault/Clio RN 1.6 16V;2001;5P/102CV;Manual
+Driver_R;F;21;Habitual;29/11/2000;B;29/08/2019;Peugeot/206 14 Feline FX;2006;5P/82CV;Manual
+Driver_S;F;48;Habitual;05/01/1974;B;22/06/1993;Renault/Sandero EXP 16;2012;5P/95CV;Manual
+Driver_T;F;22;Habitual;20/11/1999;B;11/02/2020;Renault/Logan AUT 1016V;2010;5P/76CV;Manual
+Driver_U;M;20;Habitual;15/9/2001;B;31/08/2020;VW/Gol 1.0;2010;5P/76CV;Manual
+Driver_V;M;29;Habitual;29/1/1993;B;03/02/2012;Fiat/Argo 1.3 Drive;2018;5P/109CV;Manual
+Driver_W;M;33;Aplicativo;28/03/1987;AB;19/05/2005;Nissan/Grand Livina 18SL;2014;7P/126CV;Automático
+Driver_X;F;48;Aplicativo;03/01/1972;B;19/09/1997;Ford/Ka SE 1.0 SD B;2018;5P/85CV;Manual
+Driver_Y;M;27;Aplicativo;08/09/1994;B;13/06/2018;I/Nissan Versa 16SL Flex;2014;5P/111CV;Manual
+Driver_Z;F;31;Habitual;4/15/91;B;15/12/2009;Fiat/Uno Mille;2013;5P/66CV;Manual
+Driver_AA;F;26;Habitual;8/23/96;B;24/08/2015;GM/Celta 1.0;2011;5P/78CV;Manual
+Driver_AB;M;29;Habitual;8/11/93;B;08/02/2019;GM/Agile;2010;5P/102CV;Manual
+Driver_AC;M;32;Habitual;1/16/90;B;13/10/2011;Renault/Sandero SIC16CVT;2020;5P/118CV;Manual
+Driver_AD;F;27;Habitual;3/3/95;B;23/07/2015;Peugeot/207 Escapade;2010;5P/113CV;Manual
+Driver_AE;F;35;Habitual;4/12/87;B;17/12/2015;Renault/Clio AUT 10 16VH;2006;5P/77CV;Manual
+Driver_AF;F;47;Habitual;2/11/75;B;04/06/2010;Citroen/C3 GLX 1.4;2008;5P/;Manual
+Driver_AG;M;55;Habitual;2/15/68;B;28/08/1992;Chevrolet/Prisma 1.4 MT LTZ;2014;5P/106CV/1400;
+Driver_AH;F;25;Habitual;4/24/98;B;18/01/2017;Hyundai/HB20S 1.6M prem;2014;5P/128CV/1591;
+Driver_AI;M;57;Aplicativo;3/9/66;AC;09/12/1984;Reanult/kwid Zen 10MT;2020;5P/70CV/999;
+Driver_AJ;M;34;Habitual;1/5/90;B;23/07/2008;Hyundai/HB20 1.6M 1.6M;2013;5P/128CV;Manual
+Driver_AK;M;30;Habitual;9/12/94;AB;25/07/2013;Fiat/Uno Way 1.0;2011;5P/75CV/1000;
+Driver_AL;M;40;Habitual;2/12/84;B;23/10/2002;Vw/Gol 1.6L MB5;2019;5P/104CV/1598;Manual
+Driver_AM;M;33;Habitual;7/29/91;B;14/10/2011;Vw/Parati CL;1994;5P/82CV/1600;
+Driver_AN;F;29;Habitual;8/23/95;B;24/02/2017;Renault/Sandero AUT1016V;2011;5P/77CV/998;
