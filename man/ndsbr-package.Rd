@@ -8,6 +8,13 @@
 \description{
 A compilation of methods used in the Brazilian Naturalistic Driving Study (NDS-BR). Contains functions to load, manipulate and analyze naturalistic data.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://pabsantos.github.io/ndsbr/}
+}
+
+}
 \author{
 \strong{Maintainer}: Pedro Augusto Borges dos Santos \email{pabsantos21@gmail.com}
 
