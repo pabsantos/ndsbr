@@ -14,10 +14,10 @@ The goal of ndsbr is to help you **load**, **manipulate** and
 
 ## Overview
 
-This package privides two main categories of functions: `nds_create` and
-`nds_calc`, in addition to other utility functions. `nds_create`
-functions are used to create spatial objects in sf format, using the
-naturalistic data as input:
+This package provides four main categories of functions: `nds_create`,
+`nds_calc`, `nds_join`, and `nds_download`. `nds_create` functions are
+used to create spatial objects in sf format, using the naturalistic data
+as input:
 
 - `nds_create_points`
 - `nds_create_lines`
@@ -30,9 +30,13 @@ safety-related variables, such as speeding:
 - `nds_calc_time`
 - `nds_calc_speeding`
 
-`nds_load_data` is used to load naturalistic data and `nds_download_sf`
-can be used to download spatial data and import into the project
-environment.
+`nds_join` functions performs spatial join operations between ndsbr data
+and other spatial data, like road axis (`nds_join_axis`), neighborhood
+data (`nds_join_neigh`), and speed limit data (`nds_join_spdlimit`).
+
+`nds_load_data` is used to load naturalistic data and `nds_download`
+functions ( `nds_download_sf`, `nds_download_cwb_osm`) can be used to
+download spatial data and import into the project environment.
 
 A brief presentation (in portuguese) about `ndsbr` can be [accessed
 here](https://rpubs.com/pabsantos/stpr_ndsbr).
